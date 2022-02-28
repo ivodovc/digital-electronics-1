@@ -16,7 +16,7 @@
 
    ![greater_fun](greaterSOP.png)
    
-   \n
+   
    
    ![less_fun](lessPoS.png)
 
