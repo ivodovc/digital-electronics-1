@@ -47,6 +47,10 @@
 
    ![signals](signals.png)
 
+Same signals in binary:
+
+   ![signals_bin](signals_bin.png)
+
 ### LED(7:4) indicators
 
 1. Listing of LEDs(7:4) part of VHDL architecture from source file `top.vhd`. Try to write logic functions as simple as possible. Always use syntax highlighting, meaningful comments, and follow VHDL guidelines:
