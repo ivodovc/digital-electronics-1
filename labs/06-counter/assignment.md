@@ -32,10 +32,8 @@
 
 2. Screenshot with simulated time waveforms. Test reset as well. Always display all inputs and outputs (display the inputs at the top of the image, the outputs below them) at the appropriate time scale!
 
-```
-   Nefunguje mi Simulacia v EDA-playground (https://www.edaplayground.com/x/XpL6), fotky simulacii dodam vo stvrtok o 11:00, kedy budem mat pristup k PC, kde su ulozene screenshoty simulacii.
-   ```
-   ![your figure]()
+
+   ![counter](counter.png)
 
 ### Two counters
 
