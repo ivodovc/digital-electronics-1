@@ -122,6 +122,7 @@ set ACTIVE_STEP init_design
 set rc [catch {
   create_msg_db init_design.pb
   set_param chipscope.maxJobs 1
+  set_param xicom.use_bs_reader 1
 OPTRACE "create in-memory project" START { }
   create_project -in_memory -part xc7a50ticsg324-1L
   set_property board_part digilentinc.com:nexys-a7-50t:part0:1.0 [current_project]
@@ -137,6 +138,7 @@ OPTRACE "set parameters" END { }
 OPTRACE "add files" START { }
   add_files -quiet D:/Documents/xdovic03/digital-electronics-1/labs/07-display_driver/display_driver/display_driver.runs/synth_1/top.dcp
 OPTRACE "read constraints: implementation" START { }
+  read_xdc D:/Documents/xdovic03/digital-electronics-1/labs/07-display_driver/display_driver/display_driver.srcs/constrs_1/new/nexys-a7-50t.xdc
 OPTRACE "read constraints: implementation" END { }
 OPTRACE "add files" END { }
 OPTRACE "link_design" START { }

@@ -81,8 +81,10 @@ begin
     --------------------------------------------------------
      p_reset_gen : process
     begin
-        s_reset <= '1'; wait for 4 ms;
+        s_reset <= '1'; wait for 10ns;
         -- Reset deactivated
+        s_reset <= '0'; wait for 150 ns;
+        s_reset <= '1'; wait for 20 ns;
         s_reset <= '0';
         wait;
     end process p_reset_gen;

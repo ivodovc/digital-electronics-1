@@ -70,6 +70,8 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 1
+set_param xicom.use_bs_reader 1
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7a50ticsg324-1L
 
@@ -101,6 +103,9 @@ OPTRACE "Adding files" END { }
 foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
   set_property used_in_implementation false $dcp
 }
+read_xdc D:/Documents/xdovic03/digital-electronics-1/labs/07-display_driver/display_driver/display_driver.srcs/constrs_1/new/nexys-a7-50t.xdc
+set_property used_in_implementation false [get_files D:/Documents/xdovic03/digital-electronics-1/labs/07-display_driver/display_driver/display_driver.srcs/constrs_1/new/nexys-a7-50t.xdc]
+
 set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 
