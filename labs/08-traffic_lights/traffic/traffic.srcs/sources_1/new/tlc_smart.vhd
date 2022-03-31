@@ -24,20 +24,22 @@ use ieee.numeric_std.all;
 ------------------------------------------------------------
 -- Entity declaration for traffic light controller
 ------------------------------------------------------------
-entity tlc is
+entity tlc_smart is
     port(
         clk     : in  std_logic;
         reset   : in  std_logic;
         -- Traffic lights (RGB LEDs) for two directions
         south_o : out std_logic_vector(3 - 1 downto 0);
-        west_o  : out std_logic_vector(3 - 1 downto 0)
+        west_o  : out std_logic_vector(3 - 1 downto 0);
+        sensor_south: in std_logic;
+        sensor_west: in std_logic;
     );
-end entity tlc;
+end entity tlc_smart;
 
 ------------------------------------------------------------
 -- Architecture declaration for traffic light controller
 ------------------------------------------------------------
-architecture Behavioral of tlc is
+architecture Behavioral of tlc_smart is
 
     -- Define the states
     type t_state is (STOP1,
@@ -74,17 +76,17 @@ begin
     -- the frequency of the clock signal is 100 MHz.
     
     -- USE THIS PART FOR FASTER/SHORTER SIMULATION
-    s_en <= '1';
+    
     --USE THE FOLLOWING PART FOR THE IMPLEMENTATION
---    clk_en0 : entity work.clock_enable
---        generic map(
---            g_MAX => 25000000 -- 250 ms / (1/100 MHz)
---        )
---        port map(
---            clk   => clk,
---            reset => reset,
---            ce_o  => s_en
---        );
+    clk_en0 : entity work.clock_enable
+        generic map(
+            g_MAX => 25000000 -- 250 ms / (1/100 MHz)
+        )
+        port map(
+            clk   => clk,
+            reset => reset,
+            ce_o  => s_en
+        );
 
     --------------------------------------------------------
     -- p_traffic_fsm:
@@ -112,6 +114,9 @@ begin
                         if (s_cnt < c_DELAY_1SEC) then
                             s_cnt <= s_cnt + 1;
                         else
+                            if sensor_south then
+                                s_state <= SOUTH_GO
+                                
                             -- Move to the next state
                             s_state <= WEST_GO;
                             -- Reset local counter value
