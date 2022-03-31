@@ -74,11 +74,11 @@ begin
     -- the frequency of the clock signal is 100 MHz.
     
     -- USE THIS PART FOR FASTER/SHORTER SIMULATION
-    s_en <= '1';
+    
     --USE THE FOLLOWING PART FOR THE IMPLEMENTATION
     clk_en0 : entity work.clock_enable
         generic map(
-            g_MAX => 10 --25000000 -- 250 ms / (1/100 MHz)
+            g_MAX => 25000000 -- 250 ms / (1/100 MHz)
         )
         port map(
             clk   => clk,
