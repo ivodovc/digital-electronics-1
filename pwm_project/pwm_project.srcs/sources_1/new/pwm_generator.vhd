@@ -55,7 +55,7 @@ begin
     p_calculate_times: process(duty)
     begin
         period <= b"0000_1010"; -- 10 clock cycles
-        pwm_on <= b"0000_0010"; --2
+        pwm_on <= unsigned(duty); --2
         pwm_off <= b"0000_0110"; --6
     end process p_calculate_times;
     

@@ -31,6 +31,7 @@ architecture testbench of tb_pwm is
     signal s_clk_100MHz : std_logic;
     signal s_reset      : std_logic;
     signal s_pwm: std_logic;
+    signal s_duty: std_logic_vector(7 downto 0);
 
 begin
     -- Connecting testbench signals with clock_enable entity
@@ -39,7 +40,7 @@ begin
         port map(
             clk_100MHz   => s_clk_100MHz,
             freq => "00000000",
-            duty  => "00000000",
+            duty  => "00000010",
             pwm => s_pwm,
             reset => s_reset
         );
@@ -75,7 +76,9 @@ begin
     p_stimulus : process
     begin
         report "Stimulus process started" severity note;
-        -- No other input data is needed
+        s_duty <= b"0000_0010";
+        wait for 100ns;
+        s_duty <= b"0000_1000";
         report "Stimulus process finished" severity note;
         wait;
     end process p_stimulus;
