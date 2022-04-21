@@ -1,0 +1,14 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Tue Apr 19 15:34:55 2022
+# Process ID: 10288
+# Current directory: D:/Documents/xdovic03/digital-electronics-1/labs/03-vivado/diky_ivko
+# Command line: vivado.exe -gui_launcher_event rodinguilauncherevent12024 D:\Documents\xdovic03\digital-electronics-1\labs\03-vivado\diky_ivko\multiplexer.xpr
+# Log file: D:/Documents/xdovic03/digital-electronics-1/labs/03-vivado/diky_ivko/vivado.log
+# Journal file: D:/Documents/xdovic03/digital-electronics-1/labs/03-vivado/diky_ivko\vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project D:/Documents/xdovic03/digital-electronics-1/labs/03-vivado/diky_ivko/multiplexer.xpr
+update_compile_order -fileset sources_1

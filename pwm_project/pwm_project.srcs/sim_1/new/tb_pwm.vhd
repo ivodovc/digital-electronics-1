@@ -39,8 +39,8 @@ begin
     uut_pwm_gen : entity work.pwm_generator
         port map(
             clk_100MHz   => s_clk_100MHz,
-            freq => "00000000",
-            duty  => "00000010",
+            freq => b"0000_0000_0000_0000",
+            duty  => b"0000_0000_0000_0000",
             pwm => s_pwm,
             reset => s_reset
         );

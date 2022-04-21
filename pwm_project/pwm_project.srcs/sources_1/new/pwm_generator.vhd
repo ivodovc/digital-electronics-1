@@ -34,8 +34,8 @@ use IEEE.NUMERIC_STD.ALL;
 entity pwm_generator is
     Port ( 
            clk_100MHz: in STD_LOGIC;
-           freq : in STD_LOGIC_VECTOR(7 downto 0);
-           duty: in STD_LOGIC_VECTOR (7 downto 0);
+           in_period : in STD_LOGIC_VECTOR(15 downto 0);
+           duty: in STD_LOGIC_VECTOR (15 downto 0);
            pwm : out STD_LOGIC;
            reset: in STD_LOGIC);
 end pwm_generator;
@@ -43,10 +43,10 @@ end pwm_generator;
 architecture Behavioral of pwm_generator is
 
     -- Local singals
-    signal frequency: unsigned(7 downto 0);
-    signal period: unsigned(7 downto 0);
-    signal pwm_on: unsigned(7 downto 0);
-    signal pwm_off: unsigned(7 downto 0);
+    signal frequency: unsigned(15 downto 0);
+    signal period: unsigned(15 downto 0);
+    signal pwm_on: unsigned(15 downto 0);
+    signal pwm_off: unsigned(15 downto 0);
     
      -- Local counter
     signal s_cnt_local : natural;
@@ -54,9 +54,10 @@ begin
     
     p_calculate_times: process(duty)
     begin
-        period <= b"0000_1010"; -- 10 clock cycles
+        -- b"1000_0110_1010_0000"
+        period <= unsigned(in_period); -- 10 clock cycles
         pwm_on <= unsigned(duty); --2
-        pwm_off <= b"0000_0110"; --6
+        pwm_off <= b"0000_0000_0000_0110"; --6
     end process p_calculate_times;
     
      p_do_pwm : process(clk_100MHz)
